@@ -1,28 +1,5 @@
 <div class="grid-container">
-  <h1 class="mat-h1">Betty la encuesta</h1>
+  <h1 class="mat-h1">Soy el Dashboard</h1>
   
-  <mat-grid-list cols="2">
-    <mat-grid-tile *ngFor="let panel of paneles | async" [colspan]="panel.cols" [rowspan]="panel.rows">
-      <mat-card class="dashboard-card">
-        <mat-card-header>
-          <mat-card-title>
-            {{panel.titulo}}
-            <button mat-icon-button class="more-button" [matMenuTriggerFor]="menu" aria-label="Toggle menu">
-              <mat-icon>more_vert</mat-icon>
-            </button>
-            <mat-menu #menu="matMenu" xPosition="before">
-              <button mat-menu-item>Expand</button>
-              <button mat-menu-item>Remove</button>
-            </mat-menu>
-          </mat-card-title>
-        </mat-card-header>
-        <mat-card-content class="dashboard-card-content">
-          <div>{{panel.text}}</div>
-        </mat-card-content>
-        <mat-card-footer>
-          <div>xD</div>
-        </mat-card-footer>
-      </mat-card>
-    </mat-grid-tile>
-  </mat-grid-list>
+  <router-outlet></router-outlet>
 </div>

@@ -5,7 +5,13 @@
 export const environment = {
   production: false,
   firebase: {
-  
+    apiKey: 'AIzaSyCJMpL_a03UaYhOyyNTP52Nfb-IxxycALQ',
+    authDomain: 'betty-ecc58.firebaseapp.com',
+    databaseURL: 'https://betty-ecc58.firebaseio.com',
+    projectId: 'betty-ecc58',
+    storageBucket: 'betty-ecc58.appspot.com',
+    messagingSenderId: '552424803023',
+    appId: '1:552424803023:web:1e5092e00e6db04dda05ba'
   }
 };
 

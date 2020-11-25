@@ -1,16 +1,28 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { HomeComponent } from './home/home.component';
-import { VotacionComponent } from './votacion/votacion.component';
-import { EncuestaComponent } from './encuesta/encuesta.component';
-import { PerfilComponent } from './perfil/perfil.component';
+import { EncuestaModule } from './encuesta/encuesta.module';
+import { HomeModule } from './home/home.module';
+import { PerfilModule } from './perfil/perfil.module';
+import { VotacionModule } from './votacion/votacion.module';
+import { RouterModule } from '@angular/router';
 
 
 
 @NgModule({
-  declarations: [HomeComponent, VotacionComponent, EncuestaComponent, PerfilComponent],
+  declarations: [],
   imports: [
-    CommonModule
+    CommonModule,
+    EncuestaModule,
+    HomeModule,
+    PerfilModule,
+    VotacionModule,
+    RouterModule
+  ],
+  exports: [
+    EncuestaModule,
+    HomeModule,
+    PerfilModule,
+    VotacionModule
   ]
 })
 export class PagesModule { }
