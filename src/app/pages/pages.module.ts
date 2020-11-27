@@ -5,6 +5,7 @@ import { HomeModule } from './home/home.module';
 import { PerfilModule } from './perfil/perfil.module';
 import { VotacionModule } from './votacion/votacion.module';
 import { RouterModule } from '@angular/router';
+import { MaterialModule } from '../material.module';
 
 
 

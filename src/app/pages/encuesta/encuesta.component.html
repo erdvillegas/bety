@@ -1,1 +1,22 @@
-<p>encuesta works!</p>
+<h1>Hola encuestas!</h1>
+
+<!-- <mat-progress-bar mode="query" *ngIf="cargando || encuestas.length <= 0"></mat-progress-bar> -->
+
+<div class="swiper-container">
+    <div class="swiper-wrapper">
+        <div class="swiper-slide text-white text-center" *ngFor="let encuesta of encuestas">
+            <!-- <img [src]="encuesta.profile_path | poster" [alt]="actor.name" class="img-thumbnail" [title]="actor.name"> -->
+            <mat-card>
+                <mat-card-title>
+                    {{encuesta.titulo}}
+                </mat-card-title>
+                <mat-card-content>
+                    {{encuesta.creado}}
+                </mat-card-content>
+                <mat-card-footer>
+                    {{encuesta.creado | date}}
+                </mat-card-footer>
+            </mat-card>
+        </div>
+    </div>
+</div>
