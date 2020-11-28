@@ -1,44 +1,47 @@
-import { Component, OnInit, AfterViewInit } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { EncuestasService } from '../../services/encuestas.service';
 import { EncuestaModel } from '../../models/encuestas';
-import Swiper from 'swiper';
+import { tap } from 'rxjs/operators';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-encuesta',
   templateUrl: './encuesta.component.html',
   styleUrls: ['./encuesta.component.css']
 })
-export class EncuestaComponent implements OnInit, AfterViewInit {
+export class EncuestaComponent implements OnInit {
 
   encuestas: EncuestaModel[] = [];
   cargando: boolean = true;
 
-  constructor(private encuestasServices: EncuestasService) { }
+  constructor(private encuestasServices: EncuestasService,  private router: Router) { }
 
   ngOnInit(): void {
     this.cargarEncuestas();
   }
 
-  ngAfterViewInit(): void {
-    const swiper = new Swiper('.swiper-container', {
-      slidesPerView: 5.3,
-      freeMode: true,
-      spaceBetween: 40,
-      loop: true
-    });
+  cargarEncuestas() {
+    this.encuestasServices.cargarEncuestas()
+      .subscribe(
+        (encuestas: EncuestaModel[]) => {
+          this.encuestas = encuestas;
+        },
+        error => {
+          console.error('No se pudieron obtener las encuestas');
+          this.cargando = false;
+        },
+        () => this.cargando = false
+      );
   }
 
-  cargarEncuestas() {
-    this.encuestasServices.cargarEncuestas().subscribe(
-      (encuestas: EncuestaModel[]) => {
-        this.encuestas = encuestas;
-        console.log(encuestas);
-      },
-      error => {
-        console.error('No se pudieron obtener las encuestas');
-        this.cargando = false;
-      },
-      () => this.cargando = false
-    );
+  navegar(id: string) {
+
+    if (!id) {
+      console.error('No se recibio ID válido');
+      return;
+    }
+
+    this.router.navigate(['/votacion', id]);
   }
+
 }
